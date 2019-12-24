@@ -1,0 +1,33 @@
+﻿@model Community_Medicine_Automation_App.ViewModels.DeliverMedicineViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Please Select the Treatment Code of a Patient</h4>
+<div class="form-horizontal">
+    <form method="post">
+        <div class="form-group form-inline col-md-12">
+            @Html.Label("Treatment Code", htmlAttributes: new { @class = "col-md-2" })
+            <div class="form-group col-md-2">
+                @Html.DropDownList("Id", ViewBag.treatmentList as SelectList, "Select", new { htmlAttributes = new { @class = "col-md-8" } })
+            </div>
+            <div class="col-md-2">
+                <input type="button" id="btn_patientTreatment_add" value="Show Report" class="btn btn-default" />
+            </div>
+
+
+        </div>
+
+        <div class="col-md-12 offset-2">
+            <input type="submit" name="Center" value="Give Medicine" />
+        </div>
+    </form>
+
+</div>
+<h4 style="color: chocolate">@ViewBag.message</h4>
+
+@section scripts
+{
+
+    <script src="~/Scripts/Application/TreatmentReport.js"></script>
+}

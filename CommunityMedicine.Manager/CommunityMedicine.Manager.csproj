@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3BE4B8A0-0995-429E-A299-8A55C0391584}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CommunityMedicine.Manager</RootNamespace>
+    <AssemblyName>CommunityMedicine.Manager</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CenterLoginManager.cs" />
+    <Compile Include="CenterManager.cs" />
+    <Compile Include="CommonManager.cs" />
+    <Compile Include="DiseaseManager.cs" />
+    <Compile Include="DoctorManager.cs" />
+    <Compile Include="Interfaces\ICenterLoginManager.cs" />
+    <Compile Include="Interfaces\ICenterManager.cs" />
+    <Compile Include="Interfaces\ICommonManager.cs" />
+    <Compile Include="Interfaces\IDiseaseManager.cs" />
+    <Compile Include="Interfaces\IDoctorManager.cs" />
+    <Compile Include="Interfaces\IMedicineManager.cs" />
+    <Compile Include="Interfaces\IMedicineStoreManager.cs" />
+    <Compile Include="Interfaces\IPatientManager.cs" />
+    <Compile Include="Interfaces\IPatientTreatmentManager.cs" />
+    <Compile Include="MedicineManager.cs" />
+    <Compile Include="MedicineStoreManager.cs" />
+    <Compile Include="PatientManager.cs" />
+    <Compile Include="PatientTreatmentManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommunityMedicine.Models\CommunityMedicine.Models.csproj">
+      <Project>{e546bb21-10a4-4ff0-b74b-3a7829f14437}</Project>
+      <Name>CommunityMedicine.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommunityMedicine.Repository\CommunityMedicine.Repository.csproj">
+      <Project>{40d33ab9-8803-4d58-80f7-0a1a2560ee5c}</Project>
+      <Name>CommunityMedicine.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

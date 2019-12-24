@@ -1,0 +1,24 @@
+﻿@model CommunityMedicine.Models.Models.Center
+@{
+   
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Medicine Stock Report of a Center</h4>
+
+<div class="form-horizontal">
+    <form method="post">
+        <div class="form-group form-inline col-md-12">
+            @Html.Label("Center Name", htmlAttributes: new { @class = "col-md-2" })
+            <div class="form-group col-md-8">
+                @Html.DropDownList("Id",ViewBag.centerStock as SelectList,"Select", new {htmlAttributes = new {@class = "col-md-8"}})
+            </div>
+           
+        </div>
+        
+        <div class="col-md-12 offset-2">
+            <input type="submit" name="Center" value="Report"/>
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,28 @@
+﻿@model CommunityMedicine.Models.Models.MedicineStore
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model == null)
+{
+    <h4 style="color: red">This Center Have no Medicine Which is given from Headoffice</h4>
+}
+
+@if (Model != null)
+{
+    <h4>Medicine Store of This Center</h4>
+
+    <div class="list-group" style="position: center; width: 400px; margin-left: 260px">
+
+        <div style="margin-top: 15px">
+            <a href="@Url.Action("DeliverMedicineToPatient", "Center", new {centerId = Model.CenterId})"
+               class="list-group-item list-group-item-action active">Medicine Given To Patient</a>
+        </div>
+        <div style="margin-top: 15px">
+            <a href="@Url.Action("MedicineStockReport", "Center", new {centerId = Model.CenterId})"
+               class="list-group-item list-group-item-action active">Stock Report</a>
+        </div>
+
+    </div>
+}
+
+

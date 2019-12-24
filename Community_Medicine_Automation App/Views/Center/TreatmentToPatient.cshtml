@@ -1,0 +1,193 @@
+﻿@model CommunityMedicine.Models.Models.PatientTreatment
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4> Treatement </h4>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.HiddenFor(m => m.PatientId)
+        <div class="col-md-12 form-group form-inline">
+            @Html.Label("VoterId", htmlAttributes: new { @class = "col-md-2" })
+            @Html.Editor("VoterId", new { htmlAttributes = new { @class = "col-md-8" } })
+            <input type="button" id="btn_voterId_add" value="Show Details" class="btn btn-default" />
+        </div>
+        <div class="col-md-12 form-group form-inline">
+            @Html.Label("Name", htmlAttributes: new { @class = "col-md-2" })
+            @Html.Editor("Name", new { htmlAttributes = new { @class = "col-md-8" } })
+            @Html.ValidationMessage("Name", "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="col-md-12 form-group form-inline">
+            @Html.Label("Address", htmlAttributes: new { @class = "col-md-2" })
+            @Html.Editor("Address", new { htmlAttributes = new { @class = "col-md-8" } })
+            @Html.ValidationMessage("Address", "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="col-md-12 form-group form-inline">
+
+            @Html.Label("Age", htmlAttributes: new { @class = "col-md-2" })
+            @Html.Editor("Age", new { htmlAttributes = new { @class = "col-md-8" } })
+            @Html.ValidationMessage("Age", "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="col-md-12 form-group form-inline">
+            @Html.Label("Service Given", htmlAttributes: new { @class = "col-md-2" })
+            @Html.TextBox("ServiceTime")
+            @Html.Label("Times", htmlAttributes: new { @class = "col-md-2" })
+
+
+            <div class="col-md-2">
+
+                @*<a href="@Url.Action("ShowAllHistory", "Center")">Show All History</a>*@
+            
+                    <input type="button" id="btn_showAllReport" value="Show All" class="btn btn-default" />
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <div class="col-md-12 form-group form-inline">
+
+        @Html.LabelFor(model => model.TreatmentCode, htmlAttributes: new { @class = "col-md-2" })
+        @Html.EditorFor(model => model.TreatmentCode, new { htmlAttributes = new { @class = "col-md-8" } })
+        @Html.ValidationMessageFor(model => model.TreatmentCode,"", new { @class = "text-danger" })
+
+    </div>
+
+    <div class="col-md-12 form-group form-inline">
+
+        @Html.LabelFor(model => model.Observation, htmlAttributes: new { @class = "col-md-2" })
+        @Html.EditorFor(model => model.Observation, new { htmlAttributes = new { @class = "col-md-8" } })
+        @Html.ValidationMessageFor(model => model.Observation, "", new { @class = "text-danger" })
+
+    </div>
+    <div class="col-md-12 form-group form-inline">
+
+        @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "col-md-2" })
+        @Html.TextBoxFor(model => model.Date, new { type = "date" })
+        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+
+    </div>
+    <div class="col-md-12 form-group form-inline">
+
+        @Html.Label("DoctorId", htmlAttributes: new { @class = "col-md-2" })
+        @Html.DropDownList("DoctorId", ViewBag.doctors as SelectList, "Select", new { htmlAttributes = new { @class = "col-md-8" } })
+        @Html.ValidationMessage("DoctorId", "", new { @class = "text-danger" })
+
+    </div>
+
+
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 form-group form-inline">
+
+                <div class="form-group col-md-4">
+                    @Html.Label("Disease", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2">
+                        @Html.DropDownList("DiseaseId", ViewBag.diseases as SelectList, "Select ", htmlAttributes: new { @class = "form-control" })
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                    @Html.Label("Medicine", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2">
+                        @Html.DropDownList("MedicineId", new SelectList(new List<SelectListItem>()), "Select  ", htmlAttributes: new { @class = "form-control" })
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                    @Html.Label("Dose", new { @class = "control-label col-md-2" })
+                    <div class="col-md-2">
+                        @Html.DropDownList("DoseId", ViewBag.doseList as SelectList, htmlAttributes: new { @class = "form-control" })
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 form-group form-inline">
+
+                <div class="form-group col-md-4">
+                    @Html.Label("Quantity Given", new { @class = "control-label col-md-2" })
+                    @Html.Editor("Quantity", new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+                <div class="form-group col-md-4">
+                    @Html.Label("Note", new { @class = "control-label col-md-2" })
+                    @Html.Editor("Note", new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+
+                <div class="form-group col-md-2">
+                    <div class="col-md-2">
+                        <input type="button" id="btn_disease_add" value="Add" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <table id="t_store" class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Disease</th>
+                        <th>Medicine</th>
+                        <th>Dose(Before/After Meal)</th>
+                        <th>Quanty Given</th>
+                        <th>Note</th>
+                    </tr>
+
+                </thead>
+                <tbody id="tbl_disease"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+
+}
+<div>
+    @if (Model!=null)
+    {
+        <h5 style="color: blueviolet">Your TreatmentCode is :@Model.TreatmentCode Please Preserve it for Medicine taken from Store</h5>
+    }
+</div>
+<div>
+    @if (Model != null)
+    {
+        <a href="@Url.Action("ExportReport","Report",new {Id=Model.Id})">Download Patient Prescription</a>
+    }
+</div>
+
+<h4>@ViewBag.message</h4>
+
+@section scripts
+{
+
+    <script src="~/Scripts/Application/centerOperation.js"></script>
+}

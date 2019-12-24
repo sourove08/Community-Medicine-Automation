@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title> </title>
+
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    <link href="~/css/navStyle.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    @RenderSection("styles", false)
+
+</head>
+<body>
+    <div class="top-banner" style="height: 117px; margin-top: 1px;">
+    <div style="margin-left: 225px; margin-top: 2px; float: left">
+        <img src="~/Content/Images/clinic.jpg" width="1160" />
+    </div>
+
+</div>
+
+    <div class="navbar" style="width: 1164px; margin-left: 220px">
+
+        <div class="dropdown" style="margin-left: 100px; margin-right: 100px">
+            <button class="dropbtn" style="text-align: center">
+                Head Office
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="@Url.Action("MedicineSetup","HeadOffice")">Setup Medicine</a>
+                <a href="@Url.Action("DiseaseSetup","HeadOffice")">Setup Disease</a>
+                <a href="@Url.Action("CreateCenter","HeadOffice")">Create Center</a>
+                <a href="@Url.Action("SendMedicineToCenter","HeadOffice")">Send Medicine To a Center</a>
+                <a href="@Url.Action("MedicineStoreReport","HeadOffice")">Center wise Medicine Stock Report</a>
+                <a href="@Url.Action("PatientTreatmentReport","HeadOffice")">Patient Treatment Report</a>
+            </div>
+        </div>
+
+        <div class="dropdown" style="margin-left: 100px;margin-right: 100px">
+            <button class="dropbtn" style="text-align: center">
+                Center
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="@Url.Action("CenterLoginAuthentication","Center")">Center Login</a>
+                <a href="@Url.Action("PatientTreatmentReport","HeadOffice")">Patient Treatment Report</a>
+            </div>
+        </div>
+        @*<div class="dropdown" style="margin-left: 100px;margin-right: 100px">
+            <a href="#">Register</a>
+        </div>
+        <div class="dropdown" style="margin-left: 100px;margin-right: 100px">  
+            <a href="#">Login</a>
+        </div>*@
+        @Html.Partial("~/Views/Shared/PartialView/_LoginPartial.cshtml")
+    </div>
+
+
+    <div class="container body-content">
+        <div style="height: 900px">
+            @RenderBody()
+        </div>
+        <hr />
+        <div class="footer">
+            <div style="text-align: center;color: #27AE60;">Copyright &copy; @(DateTime.Now.Year)--Community Medicine Automation</div>
+            <div style="text-align: center;color: #27AE60;">
+                Powered by <a href="#" style="color: #2980B9 ;">Sourove Saha</a>. All Rights Reserved.
+            </div>
+        </div>
+    </div>
+
+
+    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/myapp.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

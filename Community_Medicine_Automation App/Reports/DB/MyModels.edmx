@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CommunityMedicineDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="ReportMedicineStore" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ReportPatientTreatments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="CommunityMedicineDBModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CommunityMedicineDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CommunityMedicineDBEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="ReportMedicineStore" ReturnType="Collection(CommunityMedicineDBModel.ReportMedicineStore_Result)" />
+          <FunctionImport Name="ReportPatientTreatments" ReturnType="Collection(CommunityMedicineDBModel.ReportPatientTreatments_Result)" />
+        </EntityContainer>
+        <ComplexType Name="ReportMedicineStore_Result">
+          <Property Type="Int32" Name="MedicineStoreId" Nullable="false" />
+          <Property Type="Int32" Name="MedicineStoreCenterId" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="MedicineId" Nullable="false" />
+          <Property Type="String" Name="GenericName" Nullable="true" />
+          <Property Type="Double" Name="Quantity" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ReportPatientTreatments_Result">
+          <Property Type="Int32" Name="PatientId" Nullable="false" />
+          <Property Type="Int32" Name="VoterId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" />
+          <Property Type="String" Name="Address" Nullable="true" />
+          <Property Type="String" Name="Age" Nullable="true" />
+          <Property Type="Int32" Name="ServiceTime" Nullable="false" />
+          <Property Type="Int32" Name="PatientTreatmentId" Nullable="false" />
+          <Property Type="String" Name="Observation" Nullable="true" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="DoctorId" Nullable="false" />
+          <Property Type="Int32" Name="DiseaseId" Nullable="false" />
+          <Property Type="String" Name="MedicineName" Nullable="true" />
+          <Property Type="Double" Name="MedicineQuantity" Nullable="false" />
+          <Property Type="String" Name="SelectedDose" Nullable="true" />
+          <Property Type="String" Name="Note" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CommunityMedicineDBModelStoreContainer" CdmEntityContainer="CommunityMedicineDBEntities" >
+          <FunctionImportMapping FunctionImportName="ReportMedicineStore" FunctionName="CommunityMedicineDBModel.Store.ReportMedicineStore">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CommunityMedicineDBModel.ReportMedicineStore_Result">
+                <ScalarProperty Name="MedicineStoreId" ColumnName="MedicineStoreId" />
+                <ScalarProperty Name="MedicineStoreCenterId" ColumnName="MedicineStoreCenterId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MedicineId" ColumnName="MedicineId" />
+                <ScalarProperty Name="GenericName" ColumnName="GenericName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ReportPatientTreatments" FunctionName="CommunityMedicineDBModel.Store.ReportPatientTreatments">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CommunityMedicineDBModel.ReportPatientTreatments_Result">
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="VoterId" ColumnName="VoterId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="ServiceTime" ColumnName="ServiceTime" />
+                <ScalarProperty Name="PatientTreatmentId" ColumnName="PatientTreatmentId" />
+                <ScalarProperty Name="Observation" ColumnName="Observation" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="DiseaseId" ColumnName="DiseaseId" />
+                <ScalarProperty Name="MedicineName" ColumnName="MedicineName" />
+                <ScalarProperty Name="MedicineQuantity" ColumnName="MedicineQuantity" />
+                <ScalarProperty Name="SelectedDose" ColumnName="SelectedDose" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

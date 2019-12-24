@@ -1,0 +1,28 @@
+﻿@model CommunityMedicine.Models.Models.CenterLogin
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Please select your options</h4>
+<div class="list-group" style="position: center; width: 400px; margin-left: 260px">
+    <div style="margin-top: 15px">
+        <a href="@Url.Action("PatientRegistration", "Center")"
+           class="list-group-item list-group-item-action active">Patients Registration</a>
+    </div>
+    <div style="margin-top: 15px">
+        <a href="@Url.Action("DoctorEntry", "Center", new {centerId = Model.CenterId})"
+           class="list-group-item list-group-item-action active">Doctor Entry</a>
+    </div>
+    <div style="margin-top: 15px">
+        <a href="@Url.Action("TreatmentToPatient", "Center", new {centerId = Model.CenterId})"
+           class="list-group-item list-group-item-action active">Treatment Given To Patient</a>
+    </div>
+    <div style="margin-top: 15px">
+        <a href="@Url.Action("MedicineStoreView", "Center", new {centerId = Model.CenterId})"
+           class="list-group-item list-group-item-action active">Center Medicine Store</a>
+    </div>
+
+</div>
+

@@ -1,0 +1,51 @@
+﻿@using CommunityMedicine.Models.Models
+@model Community_Medicine_Automation_App.ViewModels.ShowAllHistoryViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <div class="container">
+        <div class="form-group col-md-12 form-inline">
+            <div class="form-group col-md-6">
+                @Html.Label("Voter Id", htmlAttributes: new { @class = "col-md-2" })
+                @Html.TextBoxFor(m => m.Patient.VoterId, new { htmlAttributes = new { @class = "col-md-4" } })
+            </div>
+            <div class="form-group col-md-6">
+                @Html.Label("Name", htmlAttributes: new { @class = "col-md-2" })
+                @Html.TextBoxFor(m => m.Patient.Name, new { htmlAttributes = new { @class = "col-md-4" } })
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            @Html.Label("Address", htmlAttributes: new { @class = "col-md-2" })
+            @Html.TextBoxFor(m => m.Patient.Address, new { htmlAttributes = new { @class = "col-md-4" } })
+        </div>
+        <div class="center">
+            @if (Model!=null)
+            {
+                 var i = 1;
+                foreach (var a in Model.PatientTreatments)
+                {
+
+                <p>History @i=> Center: @a.Center.Name , Doctor: @a.Doctor.Name , Observation: @a.Observation , Date: @a.Date</p>
+                   i++;
+                }
+            }
+
+        </div>
+    </div>
+    <h4>@ViewBag.message</h4>
+    @if (Model != null)
+    {
+        <div class="align-content-center" style="color: aqua">
+            <a href="@Url.Action("ExportPatientTreatmentReport","Report",new {Id=Model.Patient.Id})">Download Patient Treatment Report</a>
+        </div>
+    }
+</body>
+</html>

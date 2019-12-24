@@ -1,0 +1,25 @@
+﻿@model CommunityMedicine.Models.Models.Patient
+@{
+    ViewBag.Title = "PatientTreatmentReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Patient Treatment Report</h2>
+
+<div class="form-horizontal">
+    <form method="post">
+        <div class="form-group form-inline col-md-12">
+            @Html.Label("Patient Name", htmlAttributes: new { @class = "col-md-2" })
+            <div class="form-group col-md-8">
+                @Html.DropDownList("Id", ViewBag.patients as SelectList, "Select", new { htmlAttributes = new { @class = "col-md-8" } })
+            </div>
+           
+        </div>
+
+        <div class="col-md-12 offset-2">
+            <input type="submit" name="Center" value="Report" />
+        </div>
+    </form>
+
+</div>
+

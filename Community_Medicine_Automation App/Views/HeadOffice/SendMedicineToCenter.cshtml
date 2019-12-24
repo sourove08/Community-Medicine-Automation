@@ -1,0 +1,99 @@
+﻿@model CommunityMedicine.Models.Models.MedicineStore
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Send Medicine To a Center</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.Label("District", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.DistrictId, ViewBag.districts as SelectList, "Select", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DistrictId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Thana", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.ThanaId, new SelectList(new List<SelectListItem>()), "Select ", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ThanaId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Center", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.CenterId, new SelectList(new List<SelectListItem>()), "Select ", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CenterId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <p align="center">Add Medicine</p>
+    <hr />
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    @Html.Label("Select Medicine", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("MedicineId",ViewBag.medicines as SelectList, "Select ", htmlAttributes: new { @class = "form-control" })
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    @Html.Label("Quantity", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.Editor("Quantity", new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="button" id="btn_store_add" value="Add" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <table id="t_store" class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Medicine</th>
+                        <th>Quantity</th>
+                    </tr>
+
+                </thead>
+                <tbody id="tbl_store"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+@section scripts
+{
+   <script src="~/Scripts/Application/ThanaSelection.js"></script>
+}
+    

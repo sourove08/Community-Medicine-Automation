@@ -1,0 +1,49 @@
+﻿@model CommunityMedicine.Models.Models.MedicineStore
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Medicine Stock Report</h4>
+<hr />
+<div class="col-md-12">
+    <div class="row">
+ 
+        <table class="table-bordered table-hover table-striped col-md-10">
+            <thead>
+            <tr>
+                <th>Medicine Name</th>
+                <th>Present Stock</th>
+            </tr>
+            </thead>
+            @if(Model!=null)
+            {
+                foreach (var m in Model.StoreDetails)
+                {
+                    <tbody>
+                    <tr>
+                        <td>@m.Medicine.GenericName </td>
+                        <td> @m.Quantity</td>
+                    </tr>
+                    </tbody>
+                }
+            }
+         
+        
+
+        </table>
+       
+    </div>
+    @if (Model == null)
+    {
+        <h4 style="color: red">This Center Store Have No Medicines!!Please Send Medicines to this Center</h4>
+    }
+</div>
+@if(Model!=null)
+{
+    <div class="align-content-center" style="color: aqua">
+        <a href="@Url.Action("ExportMedicineStoreReport","Report",new {Id=Model.CenterId})">Download Medicine Stock Report</a>
+    </div>
+}
+
+
